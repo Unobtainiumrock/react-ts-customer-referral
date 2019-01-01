@@ -35,3 +35,9 @@ it('does not allow the plus button to increment the enthusiasm level above 7', (
   hello.find("#plus").simulate('click');
   expect(hello.find(".greeting").text()).toEqual('Hello Jack Daniels!!!!!!!');
 });
+
+it('throws when the enthusiasm level is above 7', () => {
+  expect(() => {
+    enzyme.shallow(<Hello name="Jack Daniels" enthusiasmLevel={8} />)
+  }).toThrow();
+});

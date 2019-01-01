@@ -15,7 +15,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Hello name="Nicholas" enthusiasmLevel={0} />
+        <Hello name="Nicholas" enthusiasmLevel={5} />
       </div>
     );
   }

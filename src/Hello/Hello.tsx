@@ -49,7 +49,13 @@ class Hello extends React.Component<Props, State> {
 
   render() {
     const { name } = this.props;
-    
+
+    if (this.state.currentEnthusiasm > 7) {
+      throw new Error(
+        "The enthusiasm cap is 7. Change the number props to 7 or below"
+      );
+    }
+
     return (
       <div className="hello">
         <div className="greeting">
