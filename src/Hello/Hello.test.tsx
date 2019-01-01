@@ -17,7 +17,13 @@ it('renders the correct text with an explicit enthusiasm of 7', () => {
   expect(hello.find(".greeting").text()).toEqual('Hello Jack Daniels!!!!!!!');
 });
 
-it('does not allow the minus button to decrement the enthusiasm level to 0 or below', () => {
+it('does not allow the minus button to decrement the enthusiasm level to 0', () => {
+  const hello = enzyme.mount(<Hello name='Jack Daniels' enthusiasmLevel={1} />);
+  hello.find("#minus").simulate('click');
+  expect(hello.find(".greeting").text()).toEqual('Hello Jack Daniels!');
+});
+
+it('does not allow the minus button to decrement the enthusiasm level to below 0', () => {
   const hello = enzyme.mount(<Hello name='Jack Daniels' enthusiasmLevel={1} />);
   hello.find("#minus").simulate('click');
   hello.find("#minus").simulate('click');
