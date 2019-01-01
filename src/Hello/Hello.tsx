@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './Hello.css';
+import { getExclamationMarks } from '../helper-functions/helper-functions';
 
 export interface Props {
   name: string;
@@ -23,15 +24,14 @@ class Hello extends React.Component<Props, State> {
   }
 
   updateEnthusiasm(currentEnthusiasm: number) {
-    switch(currentEnthusiasm) {
-      case 7:
-        this.setState({ currentEnthusiasm, plusDisabled: true });
-        break;
-      case 0:
-        this.setState({ currentEnthusiasm, minusDisabled: true });
-        break;
-      default:
-        this.setState({ currentEnthusiasm, plusDisabled: false, minusDisabled: false });
+    if (currentEnthusiasm >= 7) {
+      currentEnthusiasm = 7;
+      this.setState({ currentEnthusiasm, plusDisabled: true });
+    } else if (currentEnthusiasm <= 0) {
+      currentEnthusiasm = 0;
+      this.setState({ currentEnthusiasm, minusDisabled: true });
+    } else {
+      this.setState({ currentEnthusiasm, plusDisabled: false, minusDisabled: false });
     }
   }
 
@@ -53,22 +53,17 @@ class Hello extends React.Component<Props, State> {
     if (this.state.currentEnthusiasm < 0) {
       throw new Error('You could be a little more enthusiastic!');
     }
-    
+
     return (
       <div className="hello">
         <div className="greeting">
           Hello {name + getExclamationMarks(this.state.currentEnthusiasm)}
         </div>
-        <button onClick={this.onIncrement}>+</button>
-        <button onClick={this.onDecrement}>-</button>
+        <button id="plus" onClick={this.onIncrement}>+</button>
+        <button id="minus" onClick={this.onDecrement}>-</button>
       </div>
     );
   }
 }
 
 export default Hello;
-
-// We put these here, so that 
-function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
-}
