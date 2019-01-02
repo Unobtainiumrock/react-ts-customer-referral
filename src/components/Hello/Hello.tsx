@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Hello.css';
-import { getExclamationMarks } from '../helper-functions/helper-functions';
+import { getExclamationMarks } from '../../helper-functions/getExclamationMarks/getExclamationMarks';
 
 export interface Props {
   name: string;

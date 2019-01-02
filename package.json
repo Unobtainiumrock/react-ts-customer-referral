@@ -23,11 +23,11 @@
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
     "@types/react-redux": "^6.0.11",
-    "ajv": "^6.6.2",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
-    "jest": "^23.6.0",
     "react-test-renderer": "^16.7.0",
-    "typescript": "^3.2.2"
-  }
+    "typescript": "^3.2.2",
+    "jest": "^23.6.0",
+    "ajv": "^6.6.2"
+  } 
 }
