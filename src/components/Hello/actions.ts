@@ -1,4 +1,5 @@
 import * as constants from './constants';
+import makeActionCreator from '../../helper-functions/makeActionCreator/makeActionCreator';
 
 export interface IncrementEnthusiasm {
   type: constants.INCREMENT_ENTHUSIASM;
@@ -8,7 +9,7 @@ export interface DecrementEnthusiasm {
   type: constants.DECREMENT_ENTHUSIASM;
 }
 
-export type EnusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
+export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
 
 export function incrementEnthusiasm(): IncrementEnthusiasm {
   return {

@@ -1,14 +1,18 @@
 import makeActionCreator from './makeActionCreator';
-const DUMMY_ACTION = 'DUMMY_ACTION';
+import { isFSA, isError } from 'flux-standard-action';
+
+const DUMMY_ACTION_TYPE = 'DUMMY_ACTION_TYPE';
+const testActionCreator = makeActionCreator(DUMMY_ACTION_TYPE);
+const testAction = testActionCreator();
 
 describe('makeActionCreator', () => {
-  test('creates an action creator Function', () => {
-    expect(typeof makeActionCreator(DUMMY_ACTION)).toBe('function');
+  test('creates and returns an action creator Function', () => {
+    expect(typeof testActionCreator).toBe('function');
   });
 });
 
-describe('action creator', () => {
-  test("returns an object which must have a property of 'type' ", () => {
-    expect(makeActionCreator(DUMMY_ACTION)().hasOwnProperty('type')).toBe(true);
+describe('action creator function', () => {
+  test('it returns a flux-standard-action (fsa) compliant action object', () => {
+    expect(isFSA(testAction)).toBe(true);
   });
 });

@@ -1,7 +1,13 @@
-export default function makeActionCreator(type: String): Function {
-  return function(...args: any): Object {
+import * as constants from '../../constants/constants';
+
+export interface Action {
+  type: string;
+}
+
+export default function makeActionCreator(type: string): Function {
+  return function(...args: any): Action {
     return {
-      type: true
+      type: type
     }
   }
 }
